@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Dashboard</title>
+</head>
+<body>
+
+<h1>Azure Serverless Dashboard</h1>
+
+<button onclick="loadData()">Get Transactions</button>
+
+<pre id="result"></pre>
+
+<script>
+
+async function loadData() {
+
+    const response = await fetch(
+        "https://jerson-dashboard-api.azurewebsites.net/api/ProcessTransactions"
+    );
+
+    const data = await response.json();
+
+    document.getElementById("result").innerHTML =
+        JSON.stringify(data, null, 2);
+}
+
+</script>
+
+</body>
+</html>
