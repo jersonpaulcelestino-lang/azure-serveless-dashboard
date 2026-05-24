@@ -1,7 +1,7 @@
 async function loadData() {
 
     const response = await fetch(
-        "https://function-app-amin.azurewebsites.net/api/ProcessTransactions"
+        "https://jerson-dashboard-api.azurewebsites.net/api/ProcessTransactions"
     );
 
     const data = await response.json();
