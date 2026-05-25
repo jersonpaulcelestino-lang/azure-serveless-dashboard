@@ -36,6 +36,9 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r backend/requirements.txt
+      - name: Install dependencies for Azure Functions
+        run: |
+          pip install -r backend/requirements.txt --target="./backend/.python_packages/lib/site-packages"
 
       # Optional: Add step to run tests here
 
