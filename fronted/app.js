@@ -6,9 +6,18 @@ async function loadData() {
 
     const data = await response.json();
 
-    document.getElementById("result").innerHTML = `
-        <h4>Status: ${data.status}</h4>
-        <p>Total Transactions: ${data.total_transactions}</p>
-        <p>Failed Transactions: ${data.failed_transactions}</p>
-    `;
+    let rows = "";
+
+    data.forEach(transaction => {
+
+        rows += `
+            <tr>
+                <td>${transaction.status}</td>
+                <td>${transaction.amount}</td>
+            </tr>
+        `;
+
+    });
+
+    document.getElementById("result").innerHTML = rows;
 }
