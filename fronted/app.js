@@ -7,6 +7,8 @@ async function loadData() {
     const data = await response.json();
 
     let rows = "";
+    let successCount = 0;
+    let failedCount = 0;
 
     data.forEach(transaction => {
 
@@ -16,10 +18,21 @@ async function loadData() {
                 <td>${transaction.amount}</td>
             </tr>
         `;
+        if (transaction.status === "success") {
+            successCount++;
+        }
+        
+        if (transaction.status === "failed") {
+            failedCount++;
+        }
 
     });
 
     document.getElementById("result").innerHTML = rows;
+    document.getElementById("totalTransactions").innerText = data.length;
+    document.getElementById("successTransactions").innerText = successCount;
+    document.getElementById("failedTransactions").innerText = failedCount;
+    
 }
 
 async function createTransaction() {
